@@ -135,6 +135,7 @@ test2()
     exit(0);
   }
   wait(&status);
+  // printf("status = %d, pid = %d\n", status, pid);
   if (status == 0) {
     printf("test2 passed\n");
   }

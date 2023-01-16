@@ -76,6 +76,14 @@ usertrap(void)
   if(p->killed)
     exit(-1);
 
+  if (which_dev == 2) {
+    p->had_ticks += 1;
+    if (p->had_ticks == p->interval) {
+      p->backup = *(p->trapframe);
+      p->trapframe->epc = p->handler;
+    }
+  }
+
   // give up the CPU if this is a timer interrupt.
   if(which_dev == 2)
     yield();
