@@ -125,7 +125,7 @@ sys_sigreturn(void)
 {
   struct proc *p = myproc();
   *(p->trapframe) = p->backup;
-  p->had_ticks = 0;
+  p->handler_flag = 0;
 
   return 0;
 }

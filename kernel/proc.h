@@ -111,5 +111,5 @@ struct proc {
   // void (*handler)(void);
   int had_ticks;               // how many ticks have passed since the last call to a process's alarm handler
   struct trapframe backup;     // back up trapframe 
-  // int handler_flag;            // handler in using flag
+  int handler_flag;            // handler in using flag
 };

@@ -78,9 +78,11 @@ usertrap(void)
 
   if (which_dev == 2) {
     p->had_ticks += 1;
-    if (p->had_ticks == p->interval) {
+    if (p->had_ticks == p->interval && p->handler_flag == 0) {
       p->backup = *(p->trapframe);
       p->trapframe->epc = p->handler;
+      p->handler_flag = 1;
+      p->had_ticks = 0;
     }
   }
 
